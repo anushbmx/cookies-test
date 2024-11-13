@@ -25,7 +25,7 @@ export async function setSignedCookies(url: string) {
     httpOnly: true,
     name: "CloudFront-Signature",
     path: "/",
-    secure: true,
+    
     value: cookie["CloudFront-Signature"],
   });
   nextCookie.set({
@@ -34,7 +34,7 @@ export async function setSignedCookies(url: string) {
     httpOnly: true,
     name: "CloudFront-Key-Pair-Id",
     path: "/",
-    secure: true,
+    
     value: cookie["CloudFront-Key-Pair-Id"],
   });
   if (cookie["CloudFront-Policy"]) {
@@ -44,7 +44,7 @@ export async function setSignedCookies(url: string) {
       httpOnly: true,
       name: "CloudFront-Policy",
       path: "/",
-      secure: true,
+    
       value: cookie["CloudFront-Policy"],
     });
   }
