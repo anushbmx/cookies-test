@@ -18,7 +18,8 @@ export async function setSignedCookies(url: string) {
   console.log("===================================  Cookies set");
   console.log(`Domain ${domain}`);
   console.log("============================");
-  cookies().set({
+  const nextCookie = await cookies();
+  nextCookie.set({
     domain: domain,
     expires: expireTime,
     httpOnly: true,
@@ -27,7 +28,7 @@ export async function setSignedCookies(url: string) {
     secure: true,
     value: cookie["CloudFront-Signature"],
   });
-  cookies().set({
+  nextCookie.set({
     domain: domain,
     expires: expireTime,
     httpOnly: true,
@@ -37,7 +38,7 @@ export async function setSignedCookies(url: string) {
     value: cookie["CloudFront-Key-Pair-Id"],
   });
   if (cookie["CloudFront-Policy"]) {
-    cookies().set({
+    nextCookie.set({
       domain: domain,
       expires: expireTime,
       httpOnly: true,
